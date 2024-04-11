@@ -1,0 +1,33 @@
+﻿using practice.Models;
+using practice.Pages;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace practice
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        User? user;
+        public MainWindow()
+        {
+            InitializeComponent();
+            MainFrame.Content = new LoginPage(this);
+        }
+
+        public void SetUser(User _user)
+        {
+            user = _user;
+        }
+    }
+}

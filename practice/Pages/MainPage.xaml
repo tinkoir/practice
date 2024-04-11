@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="practice.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:practice.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="830">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Введите номер заявки для поиска:"/>
+            <TextBox x:Name="SearchTextBox" VerticalAlignment="Center" Width="268" TextChanged="TextBox_TextChanged"></TextBox>
+        </StackPanel>
+
+        <DataGrid x:Name="DGridTickets" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Id}" Width="auto"/>
+                <DataGridTextColumn Header="Создана" Binding="{Binding CreationDate}" Width="auto"/>
+                <DataGridTextColumn Header="Закрыта" Binding="{Binding ClosingDate}" Width="auto"/>
+                <DataGridTextColumn Header="Оборудование" Binding="{Binding Device}" Width="auto"/>
+                <DataGridTextColumn Header="Тип неисправности" Binding="{Binding ProblemType}" Width="auto"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="auto"/>
+                <DataGridTextColumn Header="Ответственный за исполнение" Binding="{Binding Engineer.Login}" Width="auto"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding TicketStatus}" Width="auto"/>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding Client}" Width="auto"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="EditBttn" Click="EditBttn_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Добавить" Grid.Row="2" HorizontalAlignment="Left" Name="AddBttn" Click="AddBttn_Click" Margin="10,19,0,18" Width="100"/>
+        <Button Content="Удалить" Grid.Row="2" HorizontalAlignment="Left" Name="DeleteBttn" Click="DeleteBttn_Click" Margin="720,19,0,18" Width="100"/>
+    </Grid>
+</UserControl>
